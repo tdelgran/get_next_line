@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/01 13:17:55 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:49:19 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ char	*get_next_line(int fd)
 	char	*res;
 	int		read;
 	
-	buffer = malloc(sizeof(char)) + ()
+	buffer = malloc(sizeof(char)) * (BUFFER_SIZE + 1);
 }
