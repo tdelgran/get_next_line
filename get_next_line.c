@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/01 13:49:19 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:33:34 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ int	back_n(char *str)
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
+	char	*buffer(BUFFER_SIZE + 1);
 	char	*res;
-	int		read;
-	
-	buffer = malloc(sizeof(char)) * (BUFFER_SIZE + 1);
 }

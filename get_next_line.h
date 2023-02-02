@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:43 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/01 13:52:05 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:36:37 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
+# define BUFFER_SIZE 42
 #endif
 
 int     back_n(char *str);
