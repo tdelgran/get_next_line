@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/02 15:33:34 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:42:32 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	back_n(char *str)
 
 char	*get_next_line(int fd)
 {
-	char	*buffer(BUFFER_SIZE + 1);
+	char	*buffer [BUFFER_SIZE + 1];
 	char	*res;
 }
+
+
