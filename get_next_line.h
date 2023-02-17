@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:43 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/02 15:36:37 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:41:52 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int     back_n(char *str);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
+char	*ft_strchr(const char *s, int c);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
+/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/02/03 14:22:36 by theodelgran      ###   ########.fr       */
+/*   Updated: 2023/02/17 10:41:45 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,46 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	titi[i] = '\0';
 	return (titi);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*res;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	res = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!res)
+		return (0);
+	while (s1[i])
+		i++;
+	while (j < i)
+	{
+		res[j] = s1[j];
+		j++;
+	}
+	res[j] = '\0';
+	return (res);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	i;
+
+	i = c;
+	if (i == '\0')
+	{
+		while (*s)
+			s++;
+		return ((char *)s);
+	}
+	while (*s)
+	{
+		if (*s == i)
+			return ((char *)s);
+		s++;
+	}
+	return (0);
 }
