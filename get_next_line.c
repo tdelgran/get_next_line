@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/03/03 18:10:34 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:25:21 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*read_line(char *line, int fd)
 	return (line);
 }
 
-void	format_line(char *line, char *stock)
+char	*format_line(char *line, char *stock)
 {
 	int	i;
 
@@ -37,12 +37,29 @@ void	format_line(char *line, char *stock)
 		if (line[i] == '\n')
 			break ;
 		i++;
-	}
-	// while (stock < 0)
-	// {
-		
-	// }
+	} //line[i] vaut \n apres la boucle
+	if (line[i])
+		stock = ft_strdup(line + i);
+	return (stock);		
 }
+
+char	*hanmin_trim(char *str)
+{
+	char	*start;
+	char	*end;
+	char	*trimmed;
+
+	if (!str)
+		return (NULL);
+	start = str;
+	while (*start == ' ' || *start == '\t' || *start == '\n')
+		start++;
+	end = str + ft_strlen(str) - 1;
+	while (end > start && (*end == ' ' || *end == '\t' || *end == '\n'))
+		end--;
+	trimmed = ft_strdup(start + 1);
+	return (trimmed);
+}	
 
 char    *get_next_line(int fd)
 {
@@ -54,8 +71,7 @@ char    *get_next_line(int fd)
 	line = malloc(sizeof(char));
 	*line = '\0';
 	line = read_line(line, fd);
-	format_line(line, stock);
+	stock = format_line(line, stock);
+	stock = hanmin_trim(line);
 	return (line);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/03/03 18:11:32 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:01:13 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1++;
 		i++;
 	}
-	free(s1);
+	// free(s1);
 	while (*s2 != '\0')
 	{
 		titi[i] = *s2;
