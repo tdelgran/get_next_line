@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/03/24 12:01:13 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:52:15 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (0);
-	titi = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	titi = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!titi)
 		return (0);
 	i = 0;
@@ -41,7 +41,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1++;
 		i++;
 	}
-	// free(s1);
 	while (*s2 != '\0')
 	{
 		titi[i] = *s2;
@@ -49,6 +48,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	titi[i] = '\0';
+	// free (s1);
+	// free (s2);
 	return (titi);
 }
 

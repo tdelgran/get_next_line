@@ -1,12 +1,3 @@
 Bonjour
 Au revoir
 ping pong
-
-line = "bonjour\nAu"
-
-line = "bonjour\n"
-stock = "Au"
-
-line = "Au"
-
-pong
