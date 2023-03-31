@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/03/28 15:52:15 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/03/31 17:13:25 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*titi;
 	int		i;
@@ -35,12 +35,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!titi)
 		return (0);
 	i = 0;
-	while (*s1 != '\0')
+	while (s1[i] != '\0')
 	{
-		titi[i] = *s1;
-		s1++;
+		titi[i] = s1[i];
 		i++;
 	}
+	free(s1);
 	while (*s2 != '\0')
 	{
 		titi[i] = *s2;
@@ -48,8 +48,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	titi[i] = '\0';
-	// free (s1);
-	// free (s2);
 	return (titi);
 }
 
