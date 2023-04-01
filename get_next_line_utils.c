@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/03/31 17:13:25 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:56:00 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!titi)
 		return (0);
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		titi[i] = s1[i];
 		i++;
 	}
-	free(s1);
 	while (*s2 != '\0')
 	{
 		titi[i] = *s2;
@@ -91,4 +90,28 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	}
 	return (0);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*dest;
+	size_t	i;
+
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	i = 0;
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (0);
+	while (s[start + i] && i < len)
+	{
+		dest[i] = *(s + start + i);
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
