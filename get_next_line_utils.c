@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/04/01 18:09:51 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:31:26 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -27,7 +27,7 @@ size_t	ft_strlen(const char *str)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*titi;
-	int		i;
+	size_t	i;
 
 	if (!s1 || !s2)
 		return (0);

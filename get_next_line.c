@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/04/01 18:05:41 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:30:46 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char *read_line(char *line, int fd)
 char	*format_line(char *line, char **stock)
 {
 	int	i;
-	char	*new_stock;
+		char	*new_stock;
 
 	if (!line)
 		return (NULL);
@@ -219,4 +219,3 @@ char *get_next_line(int fd)
     }
     return (line);
 }
-
