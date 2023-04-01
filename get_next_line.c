@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/04/01 17:55:38 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:05:41 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,13 @@ char *read_line(char *line, int fd)
         bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (bytes_read == -1)
         {
-            if (line)
-                free(line);
+            free(line);
             return (NULL);
         }
         buffer[bytes_read] = '\0';
-        tmp = line;
-        line = ft_strjoin(line, buffer);
-		if (tmp)
-        	free(tmp);
+        tmp = ft_strjoin(line, buffer);
+        free(line);
+        line = tmp;
         if (!line)
             return (NULL);
     }

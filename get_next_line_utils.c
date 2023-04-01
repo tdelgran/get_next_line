@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:54 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/04/01 17:56:00 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:09:51 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*ft_strdup(const char *s1)
 	int		i;
 	int		j;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
 	j = 0;
 	res = malloc(sizeof(char) * (ft_strlen(s1) + 1));
