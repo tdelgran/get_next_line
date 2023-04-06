@@ -6,15 +6,13 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:50:51 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/04/04 15:30:06 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:12:00 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-char	*read_line(char *line, int fd)
+char	*read_line(char *line, int fd, char **stock)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	int		bytes_read;
@@ -29,6 +27,9 @@ char	*read_line(char *line, int fd)
 		if (bytes_read == -1)
 		{
 			free(line);
+			if (*stock)
+				free(*stock);
+			*stock = NULL;
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
@@ -44,45 +45,33 @@ char	*format_line(char *line, char **stock)
 	int		i;
 	char	*new_stock;
 
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (line[i])
+	i = -1;
+	while (line[++i])
 	{
 		if (line[i] == '\n')
 		{
-			// printf("dwadwadaw\n");
 			i++;
 			break ;
 		}
-		i++;
 	}
 	if (line[i])
 	{
 		new_stock = ft_strdup(line + i);
-		free(*stock);
-		*stock = new_stock;
-		line[i - 1] = '\0';
+		line[i] = '\0';
 	}
 	else
-	{
-		free(*stock);
-		*stock = NULL;
-	}
-	if (line[0] == '\0' && i > 0)
-	{
-		free(line);
-		return (ft_strdup("\n"));
-	}
+		new_stock = NULL;
+	free(*stock);
+	*stock = new_stock;
 	return (line);
-	}
+}
 
 char	*trim(char *str)
 {
 	int		i;
 	char	*result;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	i = 0;
 	while (str[i] != '\n' && str[i] != '\0')
@@ -90,22 +79,17 @@ char	*trim(char *str)
 	if (str[i] == '\n')
 	{
 		result = ft_substr(str, 0, i + 1);
-		if (!result)
-			return (NULL);
 		free(str);
 		return (result);
 	}
-	if (str[0] != '\0') // Ajout de cette condition pour inclure le caractère de retour à la ligne
+	if (str[0] != '\0')
 	{
-		result = ft_strjoin(str, "\n");
+		result = ft_strjoin(str, "");
 		free(str);
 		return (result);
 	}
-	else
-	{
-		free(str);
-		return (NULL);
-	}
+	free(str);
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -123,52 +107,13 @@ char	*get_next_line(int fd)
 		free(line);
 		line = ft_strdup(stock);
 	}
-	line = read_line(line, fd);
+	line = read_line(line, fd, &stock);
 	if (line)
 	{
 		line = format_line(line, &stock);
 		line = trim(line);
-		if (!line && (stock == NULL || *stock == '\0'))
+		if (!line && (!stock || *stock == '\0'))
 			free(stock);
 	}
 	return (line);
 }
-
-// int main ()
-// {
-// 	int fd = open("coucou.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-
-// }
-
-// int	main(int ac, char **av)
-// {
-// 	int		i;
-// 	int		fd;
-// 	char	*str;
-// 	if (ac != 2)
-// 	{
-// 		printf("Wrong number of arguments !\n");
-// 		return (-1);
-// 	}
-// 	i = 0;
-// 	fd = open("coucou.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		printf("open() failed\n");
-// 		return (0);
-// 	}
-// 	while (i++ < atoi(av[1]))
-// 	{
-// 		printf("\n**************** appel %d **************\n\n", i);
-// 		str = get_next_line(fd);
-// 		printf("%s", str);
-// 	}
-// 	if (close(fd) == -1)
-// 		printf("close() failed\n");
-// 	return (0);
-// }
